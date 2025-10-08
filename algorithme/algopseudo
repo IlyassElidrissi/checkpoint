@@ -1,0 +1,29 @@
+Algorithm SentenceAnalysis
+Variables:
+  sentence : string
+  length, words, vowels : integer
+
+Begin
+  Write("Enter a sentence ending with a point: ")
+  Read(sentence)
+
+  length ← 0
+  words ← 1
+  vowels ← 0
+
+  For each character c in sentence:
+      length ← length + 1
+
+      If c = ' ' then
+          words ← words + 1
+      EndIf
+
+      If c in ('a','e','i','o','u','A','E','I','O','U') then
+          vowels ← vowels + 1
+      EndIf
+  EndFor
+
+  Write("Length of the sentence: ", length)
+  Write("Number of words: ", words)
+  Write("Number of vowels: ", vowels)
+End
