@@ -1,0 +1,47 @@
+/* Center content on the page */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Container setup */
+.container {
+  text-align: center;
+}
+
+/* Heading style */
+h1 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Color box */
+#color-box {
+  width: 200px;
+  height: 200px;
+  background-color: #3498db;
+  margin: 20px auto;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.4s ease;
+}
+
+/* Button style */
+#change-color-btn {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s;
+}
+
+#change-color-btn:hover {
+  background-color: #555;
+}
