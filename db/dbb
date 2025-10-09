@@ -1,0 +1,84 @@
+🏨 Step 1: Understanding the ER Diagram
+
+From the image, the Hotel Management ER Diagram shows the following entities and relationships:
+
+Entities:
+
+HOTEL
+
+Attributes: Hotel_No (PK), Name, Address
+
+ROOM
+
+Attributes: Room_No (PK), Type, Price
+
+Relationship: Each room belongs to one hotel.
+
+BOOKING
+
+Attributes: Date_From, Date_To
+
+Relationships:
+
+One booking is for one room.
+
+One booking is made by one guest.
+
+GUEST
+
+Attributes: Guest_No (PK), Name, Address
+
+🧩 Step 2: Converting Entities & Relationships into Tables
+1️⃣ HOTEL Table
+Column	Type	Key	Description
+Hotel_No	INT	PK	Unique identifier of the hotel
+Name	VARCHAR		Hotel name
+Address	VARCHAR		Hotel address
+2️⃣ ROOM Table
+Column	Type	Key	Description
+Room_No	INT	PK	Unique room number
+Hotel_No	INT	FK → HOTEL(Hotel_No)	Each room belongs to a hotel
+Type	VARCHAR		Room type (Single, Double, Suite...)
+Price	DECIMAL		Price per night
+
+Relationship:
+HOTEL (1) ───< (N) ROOM
+→ A hotel can have many rooms, but a room belongs to only one hotel.
+
+3️⃣ GUEST Table
+Column	Type	Key	Description
+Guest_No	INT	PK	Unique guest number
+Name	VARCHAR		Guest name
+Address	VARCHAR		Guest address
+4️⃣ BOOKING Table
+Column	Type	Key	Description
+Booking_No	INT	PK	Unique booking number (added for clarity)
+Hotel_No	INT	FK → HOTEL(Hotel_No)	Hotel where booking is made
+Room_No	INT	FK → ROOM(Room_No)	Room being booked
+Guest_No	INT	FK → GUEST(Guest_No)	Guest who made the booking
+Date_From	DATE		Start date
+Date_To	DATE		End date
+
+Relationships:
+
+ROOM (1) ───< (N) BOOKING
+
+GUEST (1) ───< (N) BOOKING
+
+HOTEL (1) ───< (N) BOOKING (indirectly through Room/Hotel_No)
+
+🧱 Step 3: Final Relational Schema (Simplified Notation)
+HOTEL(Hotel_No [PK], Name, Address)
+
+ROOM(Room_No [PK], Hotel_No [FK], Type, Price)
+
+GUEST(Guest_No [PK], Name, Address)
+
+BOOKING(Booking_No [PK], Hotel_No [FK], Room_No [FK], Guest_No [FK], Date_From, Date_To)
+
+🗺️ Step 4: Relationship Summary
+Relationship	Type	Description
+HOTEL → ROOM	1 : N	A hotel has many rooms
+ROOM → BOOKING	1 : N	A room can appear in many bookings
+GUEST → BOOKING	1 : N	A guest can make many bookings
+HOTEL → BOOKING	1 : N	A booking is associated with one hotel
