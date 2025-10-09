@@ -1,0 +1,21 @@
+Name	Reason I’m still not fully confident
+Segment Tree	The range query + update logic is subtle. I sometimes mix up lazy propagation or whether updates should be point or range.
+Fenwick Tree / BIT (Binary Indexed Tree)	The bit-manipulation logic (especially using i & -i) is elegant but not intuitive yet.
+Suffix Array / Suffix Tree	String algorithms with suffix structures, LCP arrays etc. have many edge cases and heavy preprocessing.
+Network Flow / Max Flow / Min Cut	The concept of augmenting paths, residual networks, capacities, and how augmenting changes the residual graph is challenging.
+Disjoint Set Union (Union-Find) with path compression & union by rank	I understand the concept, but I sometimes lose track of how path compression reorganizes parent links and the amortized complexity argument.
+Quick Sort (especially randomized or 3-way partitioning variants)	I understand the basic quick sort, but the optimizations (random pivot selection, partitioning for many equal keys) are harder.
+Radix Sort / Counting Sort	The idea is clear, but correctly implementing in code (especially stability, base choice, multiple passes) can be tricky in certain inputs (negative numbers, large range).
+
+
+🛠️ How I plan to master them
+
+Trace by hand — step through small input cases and draw how the data structure changes.
+
+Write code from scratch (without looking up reference) to force me to handle edge cases.
+
+Compare with visual animations (e.g. VisuAlgo) to see where my logic diverges.
+
+Solve problems using those structures/algorithms (e.g. in competitive programming or coding challenge sites).
+
+Explain the algorithm to someone else (or even to myself) — teaching often reveals gaps in understanding.
