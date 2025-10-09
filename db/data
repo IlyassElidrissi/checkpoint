@@ -1,0 +1,81 @@
+🧩 Step 1: Understanding the Relational Model
+
+From the image (Relational Model
+), we have the following tables and relationships:
+
+Tables:
+
+CUSTOMER
+
+ORDERS
+
+PRODUCT
+
+ORDER_LINE
+
+Relationships:
+
+A CUSTOMER can make many ORDERS → CUSTOMER (1) ───< (N) ORDERS
+
+An ORDER can have many PRODUCTS through ORDER_LINE
+
+A PRODUCT can appear in many ORDER_LINE entries
+→ many-to-many relationship between ORDERS and PRODUCT via ORDER_LINE
+
+🧱 Step 2: SQL Code to Create Tables
+
+Below is the SQL script to create all tables with constraints (based on Oracle SQL syntax, since you use VARCHAR2).
+
+-- 1️⃣ Create CUSTOMER table
+CREATE TABLE CUSTOMER (
+    CustomerID     NUMBER(6) PRIMARY KEY,
+    CustomerName   VARCHAR2(50) NOT NULL,
+    CustomerAddress VARCHAR2(100),
+    Phone          VARCHAR2(15)
+);
+
+-- 2️⃣ Create ORDERS table
+CREATE TABLE ORDERS (
+    OrderID        NUMBER(6) PRIMARY KEY,
+    CustomerID     NUMBER(6),
+    CONSTRAINT fk_orders_customer
+        FOREIGN KEY (CustomerID)
+        REFERENCES CUSTOMER(CustomerID)
+);
+
+-- 3️⃣ Create PRODUCT table
+CREATE TABLE PRODUCT (
+    ProductID      NUMBER(6) PRIMARY KEY,
+    ProductName    VARCHAR2(50) NOT NULL,
+    Price          NUMBER(10,2) CHECK (Price > 0)
+);
+
+-- 4️⃣ Create ORDER_LINE table (associative table)
+CREATE TABLE ORDER_LINE (
+    OrderID        NUMBER(6),
+    ProductID      NUMBER(6),
+    Quantity       NUMBER(4) CHECK (Quantity > 0),
+    PRIMARY KEY (OrderID, ProductID),
+    CONSTRAINT fk_orderline_order
+        FOREIGN KEY (OrderID)
+        REFERENCES ORDERS(OrderID),
+    CONSTRAINT fk_orderline_product
+        FOREIGN KEY (ProductID)
+        REFERENCES PRODUCT(ProductID)
+);
+
+⚙️ Step 3: Alter Tables as Requested
+✅ 1. Add column Category to PRODUCT
+ALTER TABLE PRODUCT
+ADD Category VARCHAR2(20);
+
+✅ 2. Add column OrderDate to ORDERS with default value = current system date
+ALTER TABLE ORDERS
+ADD OrderDate DATE DEFAULT SYSDATE;
+
+🧾 Step 4: Final Check — Table Summary
+Table	Primary Key	Foreign Keys	Extra
+CUSTOMER	CustomerID	—	—
+ORDERS	OrderID	CustomerID → CUSTOMER	OrderDate added
+PRODUCT	ProductID	—	Category added
+ORDER_LINE	(OrderID, ProductID)	→ ORDERS, → PRODUCT	—
