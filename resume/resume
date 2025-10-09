@@ -1,0 +1,85 @@
+Clean Code – Summary and Explanation
+
+Book: Clean Code by Robert C. Martin
+Author: Robert C. Martin (Uncle Bob)
+Reference Link: Clean Code on Amazon
+
+Chapter 2: Meaningful Names (4 hours)
+
+Explanation:
+This chapter focuses on how choosing meaningful and descriptive names can make your code clearer and more understandable. A good name reveals the purpose of a variable, function, or class without needing additional comments.
+
+Summary:
+
+Names should be clear, descriptive, and intentional.
+
+Avoid meaningless names like tmp, data, or value.
+
+Use consistent terminology across your project.
+
+Prefer pronounceable and searchable names for better collaboration.
+
+Good naming reduces the need for comments.
+
+Learning Outcome:
+Students will understand how proper naming improves code readability, communication, and maintainability.
+
+Chapter 3: Functions (4 hours)
+
+Explanation:
+Functions are the core of clean programming. This chapter teaches how to create small, focused functions that do one thing and do it well.
+
+Summary:
+
+Keep functions small and simple.
+
+Each function should perform one task only.
+
+Use descriptive function names that explain what they do.
+
+Limit the number of parameters.
+
+Avoid side effects that alter unexpected parts of the program.
+
+Separate commands (actions) from queries (data returns).
+
+Learning Outcome:
+Students will learn to refactor long, complex functions into smaller, modular ones to improve readability and testing.
+
+Chapter 4: Comments (4 hours)
+
+Explanation:
+This chapter explains that comments should be used wisely. Code should be self-explanatory through clear structure and naming. Comments are only necessary when code cannot express intent clearly.
+
+Summary:
+
+Good comments explain “why,” not “what.”
+
+Avoid unnecessary or outdated comments.
+
+Write self-documenting code using meaningful names and structure.
+
+Keep comments short, accurate, and relevant.
+
+Learning Outcome:
+Students will know when to use comments effectively and how to write code that communicates its purpose without relying on them.
+
+Chapter 6: Objects and Data Structures (4 hours)
+
+Explanation:
+This chapter explains the difference between objects (which hide data and expose behavior) and data structures (which expose data and have little behavior). Both are useful, but must be used appropriately.
+
+Summary:
+
+Objects: Hide data and expose methods to manipulate it.
+
+Data structures: Expose data directly and have minimal behavior.
+
+Use object-oriented design when you want flexibility and abstraction.
+
+Use procedural design when working with straightforward data manipulation.
+
+Avoid mixing the two styles inappropriately.
+
+Learning Outcome:
+Students will understand how to design systems using either data structures or objects, depending on the problem’s needs.
