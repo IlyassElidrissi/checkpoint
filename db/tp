@@ -1,0 +1,84 @@
+-- 1. Display all the data of customers
+SELECT * 
+FROM CUSTOMER;
+
+-- 2. Display the product_name and category for products which their price is between 5000 and 10000
+SELECT product_name, category
+FROM PRODUCT
+WHERE price BETWEEN 5000 AND 10000;
+
+-- 3. Display all the data of products sorted in descending order of price
+SELECT *
+FROM PRODUCT
+ORDER BY price DESC;
+
+-- 4. Display the total number of orders, the average amount, the highest total amount and the lowest total amount
+SELECT 
+    COUNT(order_id) AS total_orders,
+    AVG(total_amount) AS average_amount,
+    MAX(total_amount) AS highest_amount,
+    MIN(total_amount) AS lowest_amount
+FROM ORDERS;
+
+-- 5. For each product_id, display the number of orders
+SELECT 
+    product_id,
+    COUNT(order_id) AS number_of_orders
+FROM ORDER_LINE
+GROUP BY product_id;
+
+-- 6. Display the customer_id which has more than 2 orders
+SELECT 
+    customer_id
+FROM ORDERS
+GROUP BY customer_id
+HAVING COUNT(order_id) > 2;
+
+-- 7. For each month of the 2020 year, display the number of orders
+SELECT 
+    EXTRACT(MONTH FROM order_date) AS month,
+    COUNT(order_id) AS number_of_orders
+FROM ORDERS
+WHERE EXTRACT(YEAR FROM order_date) = 2020
+GROUP BY EXTRACT(MONTH FROM order_date)
+ORDER BY month;
+
+
+📝 For MySQL, use:
+
+SELECT MONTH(order_date) AS month, COUNT(order_id) AS number_of_orders
+FROM ORDERS
+WHERE YEAR(order_date) = 2020
+GROUP BY MONTH(order_date)
+ORDER BY month;
+
+-- 8. For each order, display the product_name, the customer_name and the date of the order
+SELECT 
+    o.order_id,
+    p.product_name,
+    c.customer_name,
+    o.order_date
+FROM ORDERS o
+JOIN ORDER_LINE ol ON o.order_id = ol.order_id
+JOIN PRODUCT p ON ol.product_id = p.product_id
+JOIN CUSTOMER c ON o.customer_id = c.customer_id;
+
+-- 9. Display all the orders made three months ago
+SELECT *
+FROM ORDERS
+WHERE order_date >= ADD_MONTHS(SYSDATE, -3);
+
+
+📝 For MySQL use:
+
+SELECT *
+FROM ORDERS
+WHERE order_date >= DATE_SUB(CURDATE(), INTERVAL 3 MONTH);
+
+-- 10. Display customers (customer_id) who have never ordered a product
+SELECT c.customer_id, c.customer_name
+FROM CUSTOMER c
+WHERE c.customer_id NOT IN (
+    SELECT DISTINCT customer_id
+    FROM ORDERS
+);
