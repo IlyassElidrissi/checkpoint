@@ -1,0 +1,30 @@
+-- Insert data into CUSTOMER table
+INSERT INTO CUSTOMER (CustID, CustName, CustCity, CustPhone) VALUES
+(1, 'Ali', 'Casablanca', '0600112233'),
+(2, 'Sara', 'Rabat', '0611223344'),
+(3, 'Youssef', 'Marrakech', '0622334455'),
+(4, 'Hajar', 'Fès', '0633445566');
+
+-- Insert data into PRODUCT table
+INSERT INTO PRODUCT (ProdID, ProdName, UnitPrice) VALUES
+(10, 'Burger', 35.00),
+(11, 'Fries', 15.00),
+(12, 'Coca Cola', 10.00),
+(13, 'Ice Cream', 20.00);
+
+-- Insert data into ORDER table
+INSERT INTO "ORDER" (OrderID, OrderDate, CustID) VALUES
+(100, TO_DATE('2024-09-01', 'YYYY-MM-DD'), 1),
+(101, TO_DATE('2024-09-02', 'YYYY-MM-DD'), 2),
+(102, TO_DATE('2024-09-03', 'YYYY-MM-DD'), 3),
+(103, TO_DATE('2024-09-04', 'YYYY-MM-DD'), 4);
+
+-- Insert data into ORDER_LINE table
+INSERT INTO ORDER_LINE (OrderID, ProdID, Quantity) VALUES
+(100, 10, 2),   -- Ali ordered 2 Burgers
+(100, 11, 1),   -- Ali ordered 1 Fries
+(101, 12, 3),   -- Sara ordered 3 Coca Colas
+(102, 10, 1),   -- Youssef ordered 1 Burger
+(102, 13, 2),   -- Youssef ordered 2 Ice Creams
+(103, 11, 2),   -- Hajar ordered 2 Fries
+(103, 12, 1);   -- Hajar ordered 1 Coca Cola
